@@ -14,13 +14,13 @@ A collection of vanilla JavaScript utilities including a custom grid system, sta
 ## Installation
 
 ```bash
-npm install vanilla-js-helpers
+npm install yg-vanilla-js-helpers
 ```
 
 ## Quick Start
 
 ```javascript
-import { router, grid, stats } from 'vanilla-js-helpers';
+import { router, grid, stats } from 'yg-vanilla-js-helpers';
 
 document.addEventListener('DOMContentLoaded', () => {
   router.init();
@@ -50,7 +50,7 @@ The router provides client-side navigation with smooth page transitions.
 #### Example
 
 ```javascript
-import { router } from 'vanilla-js-helpers';
+import { router } from 'yg-vanilla-js-helpers';
 
 // Initialize router
 router.init();
@@ -112,7 +112,7 @@ A responsive CSS grid system with development overlay.
 ```
 
 ```javascript
-import { grid } from 'vanilla-js-helpers';
+import { grid } from 'yg-vanilla-js-helpers';
 
 const cleanup = grid.init();
 
@@ -142,7 +142,7 @@ Real-time statistics display for development.
 #### Example
 
 ```javascript
-import { stats } from 'vanilla-js-helpers';
+import { stats } from 'yg-vanilla-js-helpers';
 
 const cleanup = stats.init();
 
@@ -200,7 +200,7 @@ npm run build:css:watch
 ## Project Structure
 
 ```
-vanilla-js-helpers/
+yg-vanilla-js-helpers/
 ├── index.js              # Main entry point
 ├── script/
 │   ├── grid.js           # Grid system
