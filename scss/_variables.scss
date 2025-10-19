@@ -1,0 +1,21 @@
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+// Theme Colors light mode
+:root {
+  --background-color: #ebecd6;
+  --foreground-color: #0a100d;
+  --accent-color: #3066be;
+}
+
+// Theme Colors dark mode
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #0a100d;
+    --foreground-color: #ebecd6;
+    --accent-color: #3066be;
+  }
+}

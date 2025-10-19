@@ -1,0 +1,287 @@
+@use "variables" as *;
+
+// =============================================================================
+// Grid System
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Container
+// -----------------------------------------------------------------------------
+.container {
+  width: 100%;
+  padding-right: $container-padding;
+  padding-left: $container-padding;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: $breakpoint-sm) {
+    max-width: 540px;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    max-width: 720px;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    max-width: 960px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    max-width: 1140px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Grid Base
+// -----------------------------------------------------------------------------
+.row {
+  display: grid;
+  gap: $container-padding;
+  width: 100%;
+  margin: 0;
+
+  // Default (sm) - 4 columns
+  grid-template-columns: repeat($grid-columns-sm, 1fr);
+
+  // sm - 8 columns
+  @media (min-width: $breakpoint-sm) {
+    grid-template-columns: repeat($grid-columns-md, 1fr);
+  }
+
+  // md and up - 12 columns
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat($grid-columns-lg, 1fr);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Column Classes
+// -----------------------------------------------------------------------------
+
+// Default columns (works across all breakpoints)
+@for $i from 1 through $grid-columns-lg {
+  .col-#{$i} {
+    // Default (sm) - 4 columns
+    grid-column-end: span min($i, $grid-columns-sm);
+
+    // sm - 8 columns
+    @media (min-width: $breakpoint-sm) {
+      grid-column-end: span min($i, $grid-columns-md);
+    }
+
+    // md and up - 12 columns
+    @media (min-width: $breakpoint-md) {
+      grid-column-end: span min($i, $grid-columns-lg);
+    }
+  }
+}
+
+// Responsive columns
+// sm (default) - 4 columns
+@media (max-width: $breakpoint-sm) {
+  @for $i from 1 through $grid-columns-sm {
+    .sm-col-#{$i} {
+      grid-column-end: span $i;
+    }
+  }
+}
+
+// md - 8 columns
+@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+  @for $i from 1 through $grid-columns-md {
+    .md-col-#{$i} {
+      grid-column-end: span $i;
+    }
+  }
+}
+
+// lg and up - 12 columns
+@media (min-width: $breakpoint-md) {
+  @for $i from 1 through $grid-columns-lg {
+    .lg-col-#{$i} {
+      grid-column-end: span $i;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Offset Classes
+// -----------------------------------------------------------------------------
+
+// Default offset classes
+@for $i from 1 through $grid-columns-lg {
+  .offset-#{$i} {
+    // Default (sm) - 4 columns
+    grid-column-start: min($i + 1, $grid-columns-sm + 1);
+
+    // md - 8 columns
+    @media (min-width: $breakpoint-sm) {
+      grid-column-start: min($i + 1, $grid-columns-md + 1);
+    }
+
+    // lg and up - 12 columns
+    @media (min-width: $breakpoint-md) {
+      grid-column-start: min($i + 1, $grid-columns-lg + 1);
+    }
+  }
+}
+
+// Responsive offset classes
+// sm (default) - 4 columns
+@media (max-width: $breakpoint-sm) {
+  @for $i from 1 through $grid-columns-sm {
+    .sm-offset-#{$i} {
+      grid-column-start: $i + 1;
+    }
+  }
+}
+
+// md - 8 columns
+@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+  @for $i from 1 through $grid-columns-md {
+    .md-offset-#{$i} {
+      grid-column-start: $i + 1;
+    }
+  }
+}
+
+// lg and up - 12 columns
+@media (min-width: $breakpoint-md) {
+  @for $i from 1 through $grid-columns-lg {
+    .lg-offset-#{$i} {
+      grid-column-start: $i + 1;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Sub-grid Utility
+// -----------------------------------------------------------------------------
+.sub-grid {
+  display: grid;
+  gap: $container-padding;
+  height: 100%;
+  grid-template-columns: subgrid;
+}
+
+// Responsive sub-grid classes
+// sm
+@media (max-width: $breakpoint-sm) {
+  .sm-sub-grid {
+    display: grid;
+    gap: $container-padding;
+    height: 100%;
+    grid-template-columns: subgrid;
+  }
+}
+
+// md
+@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+  .md-sub-grid {
+    display: grid;
+    gap: $container-padding;
+    height: 100%;
+    grid-template-columns: subgrid;
+  }
+}
+
+// lg
+@media (min-width: $breakpoint-md) {
+  .lg-sub-grid {
+    display: grid;
+    gap: $container-padding;
+    height: 100%;
+    grid-template-columns: subgrid;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Grid Overlay
+// -----------------------------------------------------------------------------
+.grid-overlay {
+  display: none;
+  position: fixed;
+  pointer-events: none;
+  user-select: none;
+  inset: 0;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: -1;
+
+  &.show {
+    display: block;
+
+    .row {
+      position: relative;
+      height: 100dvh;
+
+      // Default (sm) - 4 columns
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          to right,
+          color-mix(in srgb, var(--accent-color) 15%, transparent) 0,
+          color-mix(in srgb, var(--accent-color) 15%, transparent)
+            calc((100% - $container-padding * 3) / 4),
+          transparent calc((100% - $container-padding * 3) / 4),
+          transparent
+            calc((100% - $container-padding * 3) / 4 + $container-padding)
+        );
+        pointer-events: none;
+      }
+
+      // sm - 8 columns
+      @media (min-width: $breakpoint-sm) {
+        &:before {
+          background: repeating-linear-gradient(
+            to right,
+            color-mix(in srgb, var(--accent-color) 15%, transparent) 0,
+            color-mix(in srgb, var(--accent-color) 15%, transparent)
+              calc((100% - $container-padding * 7) / 8),
+            transparent calc((100% - $container-padding * 7) / 8),
+            transparent
+              calc((100% - $container-padding * 7) / 8 + $container-padding)
+          );
+        }
+      }
+
+      // md and up - 12 columns
+      @media (min-width: $breakpoint-md) {
+        &:before {
+          background: repeating-linear-gradient(
+            to right,
+            color-mix(in srgb, var(--accent-color) 15%, transparent) 0,
+            color-mix(in srgb, var(--accent-color) 15%, transparent)
+              calc((100% - $container-padding * 11) / 12),
+            transparent calc((100% - $container-padding * 11) / 12),
+            transparent
+              calc((100% - $container-padding * 11) / 12 + $container-padding)
+          );
+        }
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Utility Classes
+// -----------------------------------------------------------------------------
+.bg-green {
+  background-color: rgb(91, 255, 143);
+  color: black;
+}
+
+.bg-yellow {
+  background-color: rgb(255, 245, 104);
+  color: black;
+}
+
+.bg-blue {
+  background-color: rgb(35, 90, 255);
+  color: white;
+}
