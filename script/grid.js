@@ -1,4 +1,4 @@
-import './styles/grid.css';
+import '../dist/styles/grid.min.css';
 
 class Grid {
   constructor() {

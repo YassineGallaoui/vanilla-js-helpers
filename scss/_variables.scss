@@ -19,3 +19,19 @@
     --accent-color: #3066be;
   }
 }
+
+// Breakpoints
+$breakpoint-sm: 577px;
+$breakpoint-md: 769px;
+$breakpoint-lg: 993px;
+$breakpoint-xl: 1201px;
+$breakpoint-xxl: 1441px;
+
+// Spacing
+$spacing-unit: 8px;
+$container-padding: 15px;
+
+// Grid columns
+$grid-columns-sm: 4;
+$grid-columns-md: 8;
+$grid-columns-lg: 12;

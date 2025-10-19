@@ -2,6 +2,9 @@
   "name": "vanilla-js-helpers",
   "version": "1.0.0",
   "description": "A custom grid system, a stats overlay and a custom router. For vanilla JS projects",
+  "main": "index.js",
+  "module": "index.js",
+  "type": "module",
   "homepage": "https://github.com/YassineGallaoui/vanilla-js-helpers#readme",
   "bugs": {
     "url": "https://github.com/YassineGallaoui/vanilla-js-helpers/issues"
@@ -10,14 +13,38 @@
     "type": "git",
     "url": "git+https://github.com/YassineGallaoui/vanilla-js-helpers.git"
   },
-  "files": [],
+  "files": [
+    "index.js",
+    "script/",
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
   "license": "ISC",
   "author": "Yassine Gallaoui",
   "scripts": {
+    "build": "npm run build:css",
+    "build:css": "sass scss/_grid.scss:dist/styles/grid.min.css scss/_router.scss:dist/styles/router.min.css scss/_stats.scss:dist/styles/stats.min.css --style=compressed --no-source-map",
+    "build:css:watch": "sass scss/_grid.scss:dist/styles/grid.min.css scss/_router.scss:dist/styles/router.min.css scss/_stats.scss:dist/styles/stats.min.css --watch --style=compressed --no-source-map",
+    "prepublishOnly": "npm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "vanilla-js",
+    "grid-system",
+    "css-grid",
+    "router",
+    "spa",
+    "stats",
+    "overlay",
+    "helpers",
+    "utilities",
+    "frontend"
+  ],
   "devDependencies": {
     "clean-css-cli": "^5.6.3",
     "sass": "^1.93.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }

@@ -1,4 +1,4 @@
-import './styles/router.css';
+import '../dist/styles/router.min.css';
 
 // Application state management
 export const AppState = {

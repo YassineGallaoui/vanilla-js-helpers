@@ -1,4 +1,4 @@
-import './styles/stats.css';
+import '../dist/styles/stats.min.css';
 
 class Stats {
     constructor() {
