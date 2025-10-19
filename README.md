@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-## API Reference
+## More about it
 
 ### Router
 
@@ -111,17 +111,6 @@ A responsive CSS grid system with development overlay.
 </div>
 ```
 
-```javascript
-import { grid } from 'yg-vanilla-js-helpers';
-
-const cleanup = grid.init();
-
-// Press 'g' key to toggle grid overlay
-
-// Later, if needed:
-cleanup();
-```
-
 ### Stats Overlay
 
 Real-time statistics display for development.
@@ -137,20 +126,7 @@ Real-time statistics display for development.
 - Aspect ratio calculation
 - Real-time FPS counter
 - Toggle visibility with 's' key
-- Positioned in top-right corner
 
-#### Example
-
-```javascript
-import { stats } from 'yg-vanilla-js-helpers';
-
-const cleanup = stats.init();
-
-// Press 's' key to toggle stats visibility
-
-// Later, if needed:
-cleanup();
-```
 
 ## CSS Variables
 
@@ -178,25 +154,6 @@ The library uses CSS custom properties for theming:
 - **'g'** - Toggle grid overlay
 - **'s'** - Toggle stats overlay
 
-## Browser Support
-
-- Modern browsers with ES6 module support
-- CSS Grid support
-- CSS Custom Properties support
-
-## Development
-
-```bash
-# Install dependencies
-npm install
-
-# Build CSS from SCSS
-npm run build
-
-# Watch for changes
-npm run build:css:watch
-```
-
 ## Project Structure
 
 ```
@@ -216,10 +173,6 @@ yg-vanilla-js-helpers/
 ## License
 
 ISC
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Author
 
