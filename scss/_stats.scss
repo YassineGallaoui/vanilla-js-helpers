@@ -7,9 +7,11 @@
 .stats {
   display: none;
   font-family: monospace;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  width: 220px;
   z-index: 2;
+  gap: calc($spacing-unit * 3);
 
   &.show {
     position: fixed;
@@ -17,13 +19,134 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    top: $spacing-unit;
-    right: $spacing-unit;
-    background: rgba(var(--foreground-color), 0.8);
+    background: color-mix(in srgb, var(--background-color) 80%, transparent);
     padding: $spacing-unit;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(4px);
-    border: 1px solid rgba(var(--background-color), 0.1);
+    border: 1px solid color-mix(in srgb, var(--foreground-color) 5%, transparent);
+    
+    // Position classes
+    &.pos-tl {
+      top: $spacing-unit;
+      left: $spacing-unit;
+    }
+    
+    &.pos-tr {
+      top: $spacing-unit;
+      right: $spacing-unit;
+    }
+    
+    &.pos-bl {
+      bottom: $spacing-unit;
+      left: $spacing-unit;
+    }
+    
+    &.pos-br {
+      bottom: $spacing-unit;
+      right: $spacing-unit;
+    }
   }
+
+  .s-d {
+    display: flex;
+    flex-direction: column;
+    gap: calc($spacing-unit * 2);
+    width: 100%;
+  }
+
+  .s-c {
+    display: flex;
+    flex-direction: column;
+    gap: calc($spacing-unit / 2);
+  }
+
+  .s-l {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .l-v {
+    flex: 1;
+  }
+}
+
+// Stats control buttons
+.stats-controls {
+  display: flex;
+  gap: $spacing-unit;
+  width: 100%;
+}
+
+.stats-btn {
+  font-size: inherit;
+  background: color-mix(in srgb, var(--background-color) 20%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--foreground-color) 50%, transparent);
+  color: color-mix(in srgb, var(--foreground-color) 50%, transparent);
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-family: monospace;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border: 1px dashed var(--foreground-color);
+    color: var(--foreground-color);
+  }
+  
+  &.active {
+    border: 1px solid var(--foreground-color);
+    color: var(--foreground-color);
+  }
+}
+
+.stats-close-btn {
+  font-size: inherit;
+  background: color-mix(in srgb, var(--background-color) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground-color) 50%, transparent);
+  color: color-mix(in srgb, var(--foreground-color) 50%, transparent);
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-family: monospace;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: auto;
+  aspect-ratio: 1;
+  transform: scale(0.7);
+
+  &:hover {
+    border: 1px solid var(--foreground-color);
+    color: var(--foreground-color);
+    background: color-mix(in srgb, var(--foreground-color) 10%, transparent);
+  }
+}
+
+// Info icons and tooltips
+.info-icon {
+  color: var(--foreground-color);
+  cursor: help;
+  margin-left: 4px;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: var(--accent-color);
+  }
+}
+
+.stats-tooltip {
+  position: fixed;
+  background: color-mix(in srgb, var(--background-color) 90%, transparent);
+  color: var(--foreground-color);
+  padding: $spacing-unit;
+  border-radius: calc($spacing-unit * 0.5);
+  font-size: 0.8rem;
+  line-height: 1rem;
+  font-family: inherit;
+  max-width: 200px;
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid color-mix(in srgb, var(--foreground-color) 20%, transparent);
+  line-height: 1.2;
 }
