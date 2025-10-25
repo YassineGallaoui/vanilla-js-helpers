@@ -1,6 +1,6 @@
 {
   "name": "yg-vanilla-js-helpers",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A custom grid system, a stats overlay and a custom router. For vanilla JS projects",
   "main": "index.js",
   "module": "index.js",

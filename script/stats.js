@@ -21,7 +21,7 @@ class Stats {
      */
     getCurrentInfo() {
         return `
-      <div>${window.innerWidth} x ${window.innerHeight}</div>
+      <div>W:${window.innerWidth} x H:${window.innerHeight}</div>
       <div>Aspect Ratio: ${(window.innerWidth / window.innerHeight).toFixed(2)}</div>
       <div>FPS: ${this.fps}</div>
     `;
