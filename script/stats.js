@@ -443,9 +443,9 @@ class Stats {
      * @param {KeyboardEvent} e - The keyboard event
      */
     handleKeyPress(e) {
-        if (e.key.toLowerCase() === 's') {
-            this.statsDiv.classList.toggle('show');
-        }
+      if (e.altKey && e.key.toLowerCase() === 's') {
+          this.statsDiv.classList.toggle('show');
+      }
     }
 
     /**
