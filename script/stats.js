@@ -443,7 +443,9 @@ class Stats {
      * @param {KeyboardEvent} e - The keyboard event
      */
     handleKeyPress(e) {
+      console.log(e.key);
       if (e.altKey && e.key.toLowerCase() === 's') {
+          console.log("---STATS---")
           this.statsDiv.classList.toggle('show');
       }
     }

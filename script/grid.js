@@ -49,7 +49,9 @@ class Grid {
    * @param {KeyboardEvent} e - The keyboard event
    */
   handleKeyPress(e) {
+    console.log(e.key);
     if (e.altKey && e.key.toLowerCase() === 'g') {
+      console.log("---GRID---")
       this.toggleGridOverlay(!this.overlay.classList.contains('show'));
     }
   }
