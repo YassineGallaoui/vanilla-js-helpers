@@ -50,7 +50,7 @@ class Grid {
    */
   handleKeyPress(e) {
     console.log(e.key);
-    if (e.altKey && e.key.toLowerCase() === 'g') {
+    if ((e.altKey && e.key.toLowerCase() === 'g') || e.key === '∞') {
       console.log("---GRID---")
       this.toggleGridOverlay(!this.overlay.classList.contains('show'));
     }

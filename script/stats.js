@@ -444,7 +444,7 @@ class Stats {
      */
     handleKeyPress(e) {
       console.log(e.key);
-      if (e.altKey && e.key.toLowerCase() === 's') {
+      if ((e.altKey && e.key.toLowerCase() === 's') || e.key === 'ß') {
           console.log("---STATS---")
           this.statsDiv.classList.toggle('show');
       }
