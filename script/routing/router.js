@@ -71,6 +71,11 @@ export class Router {
 
             // Fetch new page content
             const response = await fetch(fetchPath);
+            
+            if (!response.ok) {
+                throw new Error(`Failed to fetch ${fetchPath}: ${response.status}`);
+            }
+            
             const html = await response.text();
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
@@ -108,6 +113,7 @@ export class Router {
             newContent.id = 'current-content';
             newContent.classList.remove('page-enter');
         } catch (error) {
+            console.error('Router error:', error, 'Path:', path, 'Fetch path:', fetchPath);
             // Handle routing error by showing a fallback or redirecting to home
             window.location.href = '/';
         } finally {
