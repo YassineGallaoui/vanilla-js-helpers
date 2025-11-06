@@ -8,11 +8,12 @@ class Grid {
 
   /**
    * Creates the grid overlay structure
+   * @param {boolean} show - Whether to show the grid initially
    * @returns {HTMLElement} The grid overlay element
    */
-  createGridOverlay() {
+  createGridOverlay(show = false) {
     const overlay = document.createElement('div');
-    overlay.className = 'grid-overlay show';
+    overlay.className = show ? 'grid-overlay show' : 'grid-overlay';
 
     const container = document.createElement('div');
     container.className = 'container';
@@ -34,7 +35,7 @@ class Grid {
   toggleGridOverlay(show) {
     if (show) {
       if (!this.overlay.children.length) {
-        const newOverlay = this.createGridOverlay();
+        const newOverlay = this.createGridOverlay(true);
         this.overlay.innerHTML = '';
         this.overlay.appendChild(newOverlay);
       }
@@ -56,10 +57,11 @@ class Grid {
 
   /**
    * Initializes the grid overlay functionality
+   * @param {boolean} show - Whether to show the grid initially (default: false)
    */
-  init() {
+  init(show = false) {
     // Create and insert grid overlay
-    this.overlay = this.createGridOverlay();
+    this.overlay = this.createGridOverlay(show);
     document.body.insertBefore(this.overlay, document.body.firstChild);
 
     // Add keyboard shortcut listener
