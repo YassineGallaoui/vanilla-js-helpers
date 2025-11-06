@@ -450,12 +450,13 @@ class Stats {
 
     /**
      * Initializes the stats functionality
+     * @param {boolean} show - Whether to show the stats initially (default: false)
      */
-    init() {
+    init(show = false) {
         // Create stats div
         this.statsDiv = document.createElement('div');
         this.statsDiv.id = 'stats';
-        this.statsDiv.className = 'stats';
+        this.statsDiv.className = show ? 'stats show' : 'stats';
         this.statsDiv.innerHTML = this.getCurrentInfo();
 
         // Insert as first child of body
