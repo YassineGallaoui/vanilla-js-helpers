@@ -206,7 +206,7 @@
   inset: 0;
   width: 100dvw;
   height: 100dvh;
-  z-index: -1;
+  z-index: 10000;
 
   &.show {
     display: block;
