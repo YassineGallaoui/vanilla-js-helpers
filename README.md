@@ -65,13 +65,18 @@ A responsive CSS grid system with development overlay.
 
 #### Methods
 
-- `grid.init()` - Initialize the grid overlay functionality
+- `grid.init(options)` - Initialize the grid overlay functionality
+  - `options.show` (boolean): Show grid initially
+  - `options.columnsColor` (string): Custom column color
+  - `options.columnsBorderColor` (string): Custom border color
+  - `options.columnsBorderWidth` (string): Custom border width
+  - `options.columnsBorderStyle` (string): Custom border style
 - Returns a cleanup function for removing event listeners
 
 #### Features
 
 - Responsive breakpoints (4, 8, 12 columns)
-- Visual grid overlay for development (press 'g' to toggle)
+- Visual grid overlay for development (press 'Alt + G' to toggle)
 - CSS Grid based layout system
 - Utility classes for columns, offsets, and sub-grids
 
@@ -102,6 +107,16 @@ A responsive CSS grid system with development overlay.
 
 #### Example
 
+```javascript
+grid.init({
+  show: true,
+  columnsColor: 'rgba(255, 0, 0, 0.1)',
+  columnsBorderColor: 'red',
+  columnsBorderWidth: '1px',
+  columnsBorderStyle: 'dashed'
+});
+```
+
 ```html
 <div class="container">
   <div class="row">
@@ -125,7 +140,7 @@ Real-time statistics display for development.
 - Current viewport dimensions
 - Aspect ratio calculation
 - Real-time FPS counter
-- Toggle visibility with 's' key
+- Toggle visibility with 'Alt + S' key
 
 
 ## CSS Variables
@@ -151,8 +166,8 @@ The library uses CSS custom properties for theming:
 
 ## Keyboard Shortcuts
 
-- **'g'** - Toggle grid overlay
-- **'s'** - Toggle stats overlay
+- **'Alt + G'** - Toggle grid overlay
+- **'Alt + S'** - Toggle stats overlay
 
 ## Project Structure
 

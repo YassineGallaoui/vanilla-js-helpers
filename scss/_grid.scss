@@ -215,53 +215,44 @@
       position: relative;
       height: 100dvh;
 
-      // Default (sm) - 4 columns
-      &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: repeating-linear-gradient(
-          to right,
-          color-mix(in srgb, var(--accent-color) 15%, transparent) 0,
-          color-mix(in srgb, var(--accent-color) 15%, transparent)
-            calc((100% - $container-padding * 3) / 4),
-          transparent calc((100% - $container-padding * 3) / 4),
-          transparent
-            calc((100% - $container-padding * 3) / 4 + $container-padding)
-        );
-        pointer-events: none;
+      .col-guide {
+        height: 100%;
+        background: var(--grid-columns-color, color-mix(in srgb, var(--accent-color) 15%, transparent));
+        border-color: var(--grid-columns-border-color, transparent);
+        border-width: var(--grid-columns-border-width, 0);
+        border-style: var(--grid-columns-border-style, solid);
+        box-sizing: border-box;
+
+        // Default (sm) - 4 columns: Hide 5+
+        &:nth-child(n+5) {
+          display: none;
+        }
       }
 
       // sm - 8 columns
       @media (min-width: $breakpoint-sm) {
-        &:before {
-          background: repeating-linear-gradient(
-            to right,
-            color-mix(in srgb, var(--accent-color) 15%, transparent) 0,
-            color-mix(in srgb, var(--accent-color) 15%, transparent)
-              calc((100% - $container-padding * 7) / 8),
-            transparent calc((100% - $container-padding * 7) / 8),
-            transparent
-              calc((100% - $container-padding * 7) / 8 + $container-padding)
-          );
+        .col-guide {
+
+          // Show 5-8
+          &:nth-child(n+5) {
+            display: block;
+          }
+
+          // Hide 9+
+          &:nth-child(n+9) {
+            display: none;
+          }
         }
       }
 
       // md and up - 12 columns
       @media (min-width: $breakpoint-md) {
-        &:before {
-          background: repeating-linear-gradient(
-            to right,
-            color-mix(in srgb, var(--accent-color) 15%, transparent) 0,
-            color-mix(in srgb, var(--accent-color) 15%, transparent)
-              calc((100% - $container-padding * 11) / 12),
-            transparent calc((100% - $container-padding * 11) / 12),
-            transparent
-              calc((100% - $container-padding * 11) / 12 + $container-padding)
-          );
+        .col-guide {
+
+          // Show 9-12
+          &:nth-child(n+9) {
+            display: block;
+          }
         }
       }
     }
