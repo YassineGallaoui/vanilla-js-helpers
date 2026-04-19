@@ -1,15 +1,15 @@
 # Vanilla JS Helpers
 
-A collection of vanilla JavaScript utilities including a custom grid system, stats overlay, and client-side router. Perfect for vanilla JS projects that need lightweight, dependency-free solutions.
+A collection of vanilla JavaScript utilities: a grid system, a stats overlay, and a client-side router.
 
 ## Features
 
-- 🎯 **Custom Router**: Client-side routing with smooth transitions
-- 📊 **Stats Overlay**: Real-time display of viewport dimensions, aspect ratio, and FPS
-- 📐 **Grid System**: Responsive CSS grid with overlay for development
-- 🚀 **Zero Dependencies**: Pure vanilla JavaScript and CSS
-- 📦 **ES Modules**: Modern module system support
-- 🎨 **Dark Mode**: Automatic dark/light theme support
+- **Router**: Client-side routing with page transitions
+- **Stats Overlay**: Displays viewport dimensions, aspect ratio, and FPS
+- **Grid System**: CSS grid with a development overlay
+- **No dependencies**: JavaScript and CSS only
+- **ES Modules**: Module system support
+- **Dark mode**: Responds to `prefers-color-scheme`
 
 ## Installation
 
@@ -29,58 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-## More about it
+## Grid System
 
-### Router
+CSS grid layout with a toggleable development overlay.
 
-The router provides client-side navigation with smooth page transitions.
+### Methods
 
-#### Methods
+- `grid.init(options)` - Initialize the grid
+  - `options.show` (boolean): Show overlay on init
+  - `options.columnsColor` (string): Column background color
+  - `options.columnsBorderColor` (string): Column border color
+  - `options.columnsBorderWidth` (string): Column border width
+  - `options.columnsBorderStyle` (string): Column border style
+- Returns a cleanup function
 
-- `router.init()` - Initialize the router
-- `router.navigate(path)` - Navigate to a specific path
-
-#### Features
-
-- Automatic link interception for `<a href="...">` elements
-- Browser back/forward button support
-- Smooth page transitions with CSS animations
-- Automatic content wrapping and management
-
-#### Example
-
-```javascript
-import { router } from 'yg-vanilla-js-helpers';
-
-// Initialize router
-router.init();
-
-// Programmatic navigation
-router.navigate('/about');
-```
-
-### Grid System
-
-A responsive CSS grid system with development overlay.
-
-#### Methods
-
-- `grid.init(options)` - Initialize the grid overlay functionality
-  - `options.show` (boolean): Show grid initially
-  - `options.columnsColor` (string): Custom column color
-  - `options.columnsBorderColor` (string): Custom border color
-  - `options.columnsBorderWidth` (string): Custom border width
-  - `options.columnsBorderStyle` (string): Custom border style
-- Returns a cleanup function for removing event listeners
-
-#### Features
-
-- Responsive breakpoints (4, 8, 12 columns)
-- Visual grid overlay for development (press 'Alt + G' to toggle)
-- CSS Grid based layout system
-- Utility classes for columns, offsets, and sub-grids
-
-#### CSS Classes
+### CSS Classes
 
 ```css
 /* Container */
@@ -105,7 +68,7 @@ A responsive CSS grid system with development overlay.
 .lg-sub-grid
 ```
 
-#### Example
+### Example
 
 ```javascript
 grid.init({
@@ -119,33 +82,53 @@ grid.init({
 
 ```html
 <div class="container">
-  <div class="row">
-    <div class="col-6">Half width</div>
-    <div class="col-6">Half width</div>
-  </div>
+  <div class="col-6">Half width</div>
+  <div class="col-6">Half width</div>
 </div>
 ```
 
-### Stats Overlay
+## Stats Overlay
 
-Real-time statistics display for development.
+Development overlay showing viewport and performance data.
 
-#### Methods
+### Methods
 
 - `stats.init()` - Initialize the stats overlay
-- Returns a cleanup function for removing event listeners
+- Returns a cleanup function
 
-#### Features
+### Displays
 
-- Current viewport dimensions
-- Aspect ratio calculation
-- Real-time FPS counter
-- Toggle visibility with 'Alt + S' key
+- Viewport dimensions
+- Aspect ratio
+- FPS counter
+
+
+## Router
+
+Client-side navigation with page transitions.
+
+### Methods
+
+- `router.init()` - Initialize the router
+- `router.navigate(path)` - Navigate to a path
+
+### Behavior
+
+- Intercepts clicks on `<a href="...">` elements
+- Supports browser back/forward navigation
+- Applies CSS transition classes on page change
+
+### Example
+
+```javascript
+import { router } from 'yg-vanilla-js-helpers';
+
+router.init();
+router.navigate('/about');
+```
 
 
 ## CSS Variables
-
-The library uses CSS custom properties for theming:
 
 ```css
 :root {
@@ -154,7 +137,6 @@ The library uses CSS custom properties for theming:
   --accent-color: #3066be;
 }
 
-/* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #0a100d;
@@ -166,23 +148,23 @@ The library uses CSS custom properties for theming:
 
 ## Keyboard Shortcuts
 
-- **'Alt + G'** - Toggle grid overlay
-- **'Alt + S'** - Toggle stats overlay
+- `Alt + G` — Toggle grid overlay
+- `Alt + S` — Toggle stats overlay
 
 ## Project Structure
 
 ```
 yg-vanilla-js-helpers/
-├── index.js              # Main entry point
+├── index.js
 ├── script/
-│   ├── grid.js           # Grid system
-│   ├── stats.js          # Stats overlay
+│   ├── grid.js
+│   ├── stats.js
 │   └── routing/
-│       ├── router.js     # Router implementation
-│       └── appState.js   # State management
+│       ├── router.js
+│       └── appState.js
 ├── dist/
-│   └── styles/           # Compiled CSS files
-└── scss/                 # Source SCSS files
+│   └── styles/
+└── scss/
 ```
 
 ## License

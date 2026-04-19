@@ -2,8 +2,7 @@ import { AppState, resetTransitionState, updateState } from './appState.js';
 
 export class Router {
     constructor() {
-        this.transitionDuration = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--transition-duration')) * 1000; // Convert seconds to ms
-        this.isTransitioning = false;
+        this.transitionDuration = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--transition-duration')) * 1000;
     }
 
     init() {
@@ -27,6 +26,7 @@ export class Router {
 
         // Handle browser back/forward
         window.addEventListener('popstate', () => {
+            if (AppState.is.transitioning) return;
             this.loadPage(window.location.pathname);
         });
 
@@ -46,6 +46,7 @@ export class Router {
         path = path.replace(/\/$/, '').replace(/\.html$/, '');
         if (path === '') path = '/index';
 
+        let fetchPath;
         try {
             // Update app state
             updateState({
@@ -54,7 +55,6 @@ export class Router {
             });
 
             // Determine the correct file path for fetching
-            let fetchPath;
             if (path === '/index') {
                 fetchPath = '/index.html';
             } else if (path.startsWith('/')) {
@@ -63,7 +63,7 @@ export class Router {
                 const devPath = `/src/html${path}.html`;
                 
                 // Check if we're in development mode (Vite dev server)
-                const isDev = import.meta.env.DEV;
+                const isDev = import.meta.env?.DEV ?? false;
                 fetchPath = isDev ? devPath : prodPath;
             } else {
                 fetchPath = `${path}.html`;
