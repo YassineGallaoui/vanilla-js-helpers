@@ -43,29 +43,58 @@ CSS grid layout with a toggleable development overlay.
   - `options.columnsBorderStyle` (string): Column border style
 - Returns a cleanup function
 
+### Breakpoints
+
+| Prefix | Breakpoint | Active at |
+|--------|-----------|-----------|
+| *(none)* | — | always |
+| `sm-` | 576px | `< 576px` only |
+| `md-` | 768px | `≥ 576px` and up |
+| `lg-` | 992px | `≥ 768px` and up |
+| `xl-` | 1200px | `≥ 992px` and up |
+| `xxl-` | 1440px | `≥ 1200px` and up |
+
+The grid uses **4 columns** below `576px`, **8 columns** from `576px`, and **12 columns** from `768px`.
+
+### Responsive Column Behavior
+
+Prefixed column classes use **min-width** semantics: `md-col-*` applies from its breakpoint upward until a larger-breakpoint class overrides it. A higher-breakpoint class always wins regardless of class order in the HTML attribute.
+
+```html
+<!-- col-12 on mobile, 4 cols on tablet, 3 cols on desktop -->
+<div class="col-12 md-col-4 lg-col-3">...</div>
+
+<!-- identical result — class order in HTML doesn't matter -->
+<div class="lg-col-3 col-12 md-col-4">...</div>
+```
+
 ### CSS Classes
 
 ```css
 /* Container */
 .container
 
-/* Columns */
+/* Columns (always applied) */
 .col-1 to .col-12
-.sm-col-1 to .sm-col-4
-.md-col-1 to .md-col-8
-.lg-col-1 to .lg-col-12
 
-/* Offsets */
+/* Responsive columns */
+.sm-col-1 to .sm-col-4    /* < 576px only */
+.md-col-1 to .md-col-8    /* ≥ 576px and up */
+.lg-col-1 to .lg-col-12   /* ≥ 768px and up */
+
+/* Offsets (always applied) */
 .offset-1 to .offset-12
-.sm-offset-1 to .sm-offset-4
-.md-offset-1 to .md-offset-8
-.lg-offset-1 to .lg-offset-12
+
+/* Responsive offsets */
+.sm-offset-1 to .sm-offset-4    /* < 576px only */
+.md-offset-1 to .md-offset-8    /* ≥ 576px and up */
+.lg-offset-1 to .lg-offset-12   /* ≥ 768px and up */
 
 /* Sub-grids */
 .sub-grid
-.sm-sub-grid
-.md-sub-grid
-.lg-sub-grid
+.sm-sub-grid    /* < 576px only */
+.md-sub-grid    /* ≥ 576px and up */
+.lg-sub-grid    /* ≥ 768px and up */
 ```
 
 ### Example

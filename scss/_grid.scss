@@ -86,8 +86,8 @@
   }
 }
 
-// md - 8 columns
-@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+// md and up - applies from sm breakpoint upward (overridden by lg-col-* at lg+)
+@media (min-width: $breakpoint-sm) {
   @for $i from 1 through $grid-columns-md {
     .md-col-#{$i} {
       grid-column-end: span $i;
@@ -136,8 +136,8 @@
   }
 }
 
-// md - 8 columns
-@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+// md and up - applies from sm breakpoint upward (overridden by lg-offset-* at lg+)
+@media (min-width: $breakpoint-sm) {
   @for $i from 1 through $grid-columns-md {
     .md-offset-#{$i} {
       grid-column-start: $i + 1;
@@ -175,8 +175,8 @@
   }
 }
 
-// md
-@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+// md and up
+@media (min-width: $breakpoint-sm) {
   .md-sub-grid {
     display: grid;
     gap: $container-padding;
