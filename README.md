@@ -41,6 +41,7 @@ CSS grid layout with a toggleable development overlay.
   - `options.columnsBorderColor` (string): Column border color
   - `options.columnsBorderWidth` (string): Column border width
   - `options.columnsBorderStyle` (string): Column border style
+  - `options.zIndex` (number): z-index applied to the grid overlay
 - Returns a cleanup function
 
 ### Breakpoints
@@ -122,7 +123,9 @@ Development overlay showing viewport and performance data.
 
 ### Methods
 
-- `stats.init()` - Initialize the stats overlay
+- `stats.init(options)` - Initialize the stats overlay
+  - `options.show` (boolean): Show overlay on init
+  - `options.zIndex` (number): z-index applied to the stats overlay
 - Returns a cleanup function
 
 ### Displays

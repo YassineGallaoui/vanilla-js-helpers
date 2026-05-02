@@ -450,13 +450,19 @@ class Stats {
 
     /**
      * Initializes the stats functionality
-     * @param {boolean} show - Whether to show the stats initially (default: false)
+     * @param {boolean|Object} options - Either a boolean (legacy `show` flag) or an options object
+     * @param {boolean} options.show - Whether to show the stats initially (default: false)
+     * @param {number} options.zIndex - Custom z-index for the stats overlay
      */
-    init(show = false) {
+    init(options = {}) {
+        if (typeof options === 'boolean') options = { show: options };
+        const { show = false, zIndex } = options;
+
         // Create stats div
         this.statsDiv = document.createElement('div');
         this.statsDiv.id = 'stats';
         this.statsDiv.className = show ? 'stats show' : 'stats';
+        if (zIndex !== undefined) this.statsDiv.style.zIndex = zIndex;
         this.statsDiv.innerHTML = this.getCurrentInfo();
 
         // Insert as first child of body

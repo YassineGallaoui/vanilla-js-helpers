@@ -29,6 +29,9 @@ class Grid {
       if (this.options.columnsBorderStyle) {
         overlay.style.setProperty('--grid-columns-border-style', this.options.columnsBorderStyle);
       }
+      if (this.options.zIndex !== undefined) {
+        overlay.style.zIndex = this.options.zIndex;
+      }
     }
 
     const container = document.createElement('div');
@@ -89,6 +92,7 @@ class Grid {
    * @param {string} options.columnsBorderColor - Custom column border color
    * @param {string} options.columnsBorderWidth - Custom column border width
    * @param {string} options.columnsBorderStyle - Custom column border style
+   * @param {number} options.zIndex - Custom z-index for the grid overlay
    */
   init(options = {}) {
     this.options = options;
