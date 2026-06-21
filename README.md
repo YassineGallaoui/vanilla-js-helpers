@@ -1,10 +1,9 @@
 # Vanilla JS Helpers
 
-A collection of vanilla JavaScript utilities: a grid system, a stats overlay, and a client-side router.
+A collection of vanilla JavaScript utilities: a grid system and a stats overlay.
 
 ## Features
 
-- **Router**: Client-side routing with page transitions
 - **Stats Overlay**: Displays viewport dimensions, aspect ratio, and FPS
 - **Grid System**: CSS grid with a development overlay
 - **No dependencies**: JavaScript and CSS only
@@ -20,10 +19,9 @@ npm install yg-vanilla-js-helpers
 ## Quick Start
 
 ```javascript
-import { router, grid, stats } from 'yg-vanilla-js-helpers';
+import { grid, stats } from 'yg-vanilla-js-helpers';
 
 document.addEventListener('DOMContentLoaded', () => {
-  router.init();
   grid.init();
   stats.init();
 });
@@ -135,31 +133,6 @@ Development overlay showing viewport and performance data.
 - FPS counter
 
 
-## Router
-
-Client-side navigation with page transitions.
-
-### Methods
-
-- `router.init()` - Initialize the router
-- `router.navigate(path)` - Navigate to a path
-
-### Behavior
-
-- Intercepts clicks on `<a href="...">` elements
-- Supports browser back/forward navigation
-- Applies CSS transition classes on page change
-
-### Example
-
-```javascript
-import { router } from 'yg-vanilla-js-helpers';
-
-router.init();
-router.navigate('/about');
-```
-
-
 ## CSS Variables
 
 ```css
@@ -190,10 +163,7 @@ yg-vanilla-js-helpers/
 ├── index.js
 ├── script/
 │   ├── grid.js
-│   ├── stats.js
-│   └── routing/
-│       ├── router.js
-│       └── appState.js
+│   └── stats.js
 ├── dist/
 │   └── styles/
 └── scss/

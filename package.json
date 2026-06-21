@@ -1,7 +1,7 @@
 {
   "name": "yg-vanilla-js-helpers",
   "version": "4.3.0",
-  "description": "A custom grid system, a stats overlay and a custom router. For vanilla JS projects",
+  "description": "A custom grid system and a stats overlay. For vanilla JS projects",
   "main": "index.js",
   "module": "index.js",
   "type": "module",
@@ -24,8 +24,8 @@
   "author": "Yassine Gallaoui",
   "scripts": {
     "build": "npm run build:css",
-    "build:css": "sass scss/_grid.scss:dist/styles/grid.min.css scss/_router.scss:dist/styles/router.min.css scss/_stats.scss:dist/styles/stats.min.css --style=compressed --no-source-map",
-    "build:css:watch": "sass scss/_grid.scss:dist/styles/grid.min.css scss/_router.scss:dist/styles/router.min.css scss/_stats.scss:dist/styles/stats.min.css --watch --style=compressed --no-source-map",
+    "build:css": "sass scss/_grid.scss:dist/styles/grid.min.css scss/_stats.scss:dist/styles/stats.min.css --style=compressed --no-source-map",
+    "build:css:watch": "sass scss/_grid.scss:dist/styles/grid.min.css scss/_stats.scss:dist/styles/stats.min.css --watch --style=compressed --no-source-map",
     "prepare": "npm run build",
     "release": "git diff-index --quiet HEAD -- || (echo \"Git working directory not clean\" && exit 1) && npm whoami > /dev/null 2>&1 || npm login && npm version patch -m \"chore: release v%s\" && npm publish --access public",
     "release:minor": "git diff-index --quiet HEAD -- || (echo \"Git working directory not clean\" && exit 1) && npm whoami > /dev/null 2>&1 || npm login && npm version minor -m \"feat: release v%s\" && npm publish --access public",
@@ -37,8 +37,6 @@
     "vanilla-js",
     "grid-system",
     "css-grid",
-    "router",
-    "spa",
     "stats",
     "overlay",
     "helpers",
